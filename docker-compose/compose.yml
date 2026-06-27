@@ -2,7 +2,7 @@ services:
   frontend:
     build:
       context: .
-      dockerfile: netflix-file
+      dockerfile: netflixfile
     ports:
       - "8200:80"
 
