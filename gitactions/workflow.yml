@@ -1,4 +1,4 @@
-name: Build and Deploy to Tomcat 9
+name: Build and Deploy to Tomcat 10
 
 on:
   push:
@@ -11,7 +11,7 @@ jobs:
 
     env:
       WAR_NAME: "ROOT.war"
-      TOMCAT_WEBAPPS: "/var/lib/tomcat9/webapps"
+      TOMCAT_WEBAPPS: "/var/lib/tomcat10/webapps"
 
     steps:
       - name: Checkout source code
@@ -36,10 +36,10 @@ jobs:
         run: sudo apt install -y openjdk-11-jdk
 
       - name: Install Tomcat
-        run: sudo apt install -y tomcat9 tomcat9-admin
+        run: sudo apt install -y tomcat10 tomcat10-admin
 
       - name: Restart Tomcat before deployment
-        run: sudo systemctl restart tomcat9
+        run: sudo systemctl restart tomcat10
 
       - name: Deploy WAR to Tomcat
         run: |
@@ -47,5 +47,5 @@ jobs:
           sudo cp "$WAR_NAME" "$TOMCAT_WEBAPPS/"
 
       - name: Restart Tomcat after deployment
-        run: sudo systemctl restart tomcat9
+        run: sudo systemctl restart tomcat10
 
